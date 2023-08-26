@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
-import store from '../utils/store';
+// import store from '../utils/store';
 
 const VideoCards = ({info}) => {
 // console.log(info)
@@ -11,7 +11,7 @@ const VideoCards = ({info}) => {
 
   return (
 
-    <div className={`p-1 m-1 ${isMenuOpen ? 'w-72' : ' w-64' }`}>
+    <div className={`p-1 m-1 ${isMenuOpen ? 'w-80' : ' w-64' }`}>
       <img src={thumbnails.medium.url} alt="thumbnail" 
       className='rounded-lg'
       />

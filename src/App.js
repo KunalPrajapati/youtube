@@ -12,11 +12,11 @@ function App() {
 
       {
         path: '/',
-        element: <Body />,
+        element: <Body/>,
         children: [
           {
             path: '/',
-            element: <MainContainer />
+            element: <MainContainer/>
           },
           {
             path: 'watch',
@@ -28,8 +28,8 @@ function App() {
 
   return (
     <Provider store={store}>
-      <div className="App">
-        <Head />
+      <div className="App relative">
+        <div className='sticky top-0 z-20'><Head/></div>
         {/* <Body /> */}
         <RouterProvider router={appRouter} />
       </div>

@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { toggleMenu } from '../utils/appSlice';
 import { cacheResult } from '../utils/searchSlice';
 import {GoSearch} from 'react-icons/go';
-import ytLogo from '../assets/yt-logo.png';
+// import ytLogo from '../assets/yt-logo.png';
+import ButtonList from './ButtonList';
 
 
 const Head = () => {
@@ -102,42 +103,46 @@ const Head = () => {
     
 
   return (
-    <div className='grid grid-flow-col p-5 shadow-lg'>
-        <div className='flex col-span-1'>
-            <img src={hamburgerIcon} alt="menu" className='h-8 cursor-pointer' onClick={()=>toggleMenuHandler()} />
+    <div className='relative'>
+        <div className='grid grid-flow-col p-5 shadow-lg z-30 bg-white'>
+            <div className='flex col-span-1'>
+                <img src={hamburgerIcon} alt="menu" className='h-8 cursor-pointer' onClick={()=>toggleMenuHandler()} />
 
-            {/* <a href="/">
-                <img src={ytLogo} alt="youtube logo" className='h-8 mx-2 cursor-pointer' />
-            </a> */}
-            <a href="/">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Logo_of_YouTube_%282015-2017%29.svg/2560px-Logo_of_YouTube_%282015-2017%29.svg.png" alt="youtube logo" className='h-8 mx-2 cursor-pointer' />
-            </a>
-        </div>
-
-        <div className='col-span-10 text-center mr-24 relative'>
-            <div>
-                <input type="text" name="" id="" 
-                className='w-1/2 border border-gray-400 p-2 px-5 rounded-l-full'
-                value={searchQuery}
-                onFocus={() => (  (suggestions.length>0) ? setShowSuggestions(true) : '' )}
-                onBlur={() => setShowSuggestions(false)}
-                onChange={(e) => setSearchQuery(e.target.value)}/>
-                <button className='border border-gray-400 px-5 py-2 rounded-r-full bg-gray-200'
-                > 🔍 </button>
+                {/* <a href="/">
+                    <img src={ytLogo} alt="youtube logo" className='h-8 mx-2 cursor-pointer' />
+                </a> */}
+                <a href="/">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Logo_of_YouTube_%282015-2017%29.svg/2560px-Logo_of_YouTube_%282015-2017%29.svg.png" alt="youtube logo" className='h-8 mx-2 cursor-pointer' />
+                </a>
             </div>
-            {showSuggestions && 
-                <div className='bg-white py-2 ml-[14rem] px-2 w-[31rem] shadow-lg rounded-lg border border-gray-100 absolute'>
-                <ul className=' text-left'>
-                    {suggestions.map( (suggestion) => <li key={suggestion} className='py-2 px-3 shadow-sm hover:bg-gray-100'> <div className='flex gap-2'>
-                     <div className='pt-1'><GoSearch/></div> {suggestion}</div> </li>)}
-                </ul>
-            </div>}
-        </div>
 
-        <div className='col-span-1'>
-            <img src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png" alt="userIcon" className='h-8' />
-        </div>
+            <div className='col-span-10 text-center mr-24 relative'>
+                <div>
+                    <input type="text" name="" id="" 
+                    className='w-1/2 border border-gray-400 p-2 px-5 rounded-l-full'
+                    value={searchQuery}
+                    onFocus={() => (  (suggestions.length>0) ? setShowSuggestions(true) : '' )}
+                    onBlur={() => setShowSuggestions(false)}
+                    onChange={(e) => setSearchQuery(e.target.value)}/>
+                    <button className='border border-gray-400 px-5 py-2 rounded-r-full bg-gray-200'
+                    > 🔍 </button>
+                </div>
+                {showSuggestions && 
+                    <div className='bg-white py-2 ml-[14rem] px-2 w-[31rem] shadow-lg rounded-lg border border-gray-100 absolute'>
+                    <ul className=' text-left'>
+                        {suggestions.map( (suggestion) => <li key={suggestion} className='py-2 px-3 shadow-sm hover:bg-gray-100'> <div className='flex gap-2'>
+                        <div className='pt-1'><GoSearch/></div> {suggestion}</div> </li>)}
+                    </ul>
+                </div>}
+            </div>
 
+            <div className='col-span-1'>
+                <img src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png" alt="userIcon" className='h-8' />
+            </div>
+
+
+            {/* <ButtonList/> */}
+        </div>
     </div>
   )
 }
