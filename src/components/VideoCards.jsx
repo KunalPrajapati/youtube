@@ -10,16 +10,17 @@ const VideoCards = ({info}) => {
     const isMenuOpen = useSelector(store => store.app.isMenuOpen)
 
   return (
-
-    <div className={`p-1 m-1 ${isMenuOpen ? 'w-80' : ' w-64' }`}>
-      <img src={thumbnails.medium.url} alt="thumbnail" 
-      className='rounded-lg'
-      />
-      <ul>
-        <li className='font-bold py-2'>{title}</li>
-        <li>{channelTitle}</li>
-        <li>{statistics.viewCount} views</li>
-      </ul>
+    <div className='relative z-0'>
+      <div className={`p-1 m-1 ${isMenuOpen ? 'w-72' : ' w-64' }`}>
+        <img src={thumbnails.medium.url} alt="thumbnail" 
+        className='rounded-lg'
+        />
+        <ul>
+          <li className='font-bold py-2'>{title}</li>
+          <li>{channelTitle}</li>
+          <li>{statistics.viewCount} views</li>
+        </ul>
+      </div>
     </div>
   )
 }
