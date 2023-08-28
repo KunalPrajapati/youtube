@@ -9,10 +9,10 @@
 screenshots of work
 
 
-![youtube-clone](/poc/img1.png)
+![laptop-responsive-image](/poc/img1.png)
 
-"/poc/img2.png"
+![laptop-responsive-image](/poc/img2.png)
 
-"/poc/img3.png"
+![mobile-responsive-image](/poc/img3.png)
 
-"/poc/img4.png"
+![mobile-responsive-image](/poc/img4.png)
