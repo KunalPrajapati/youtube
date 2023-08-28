@@ -5,6 +5,8 @@ import { useSearchParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 // import { YOUTUBE_API } from '../utils/constants';
 import RecommendedVideos from './RecommendedVideos';
+import { Link } from 'react-router-dom';
+
 
 const WatchPage = () => {
 
@@ -18,37 +20,66 @@ const WatchPage = () => {
     // console.log(searchParams.get('v'));
   const dispatch = useDispatch();
 
-  const getVideos = async () => {
-    const data = await fetch(YOUTUBE_API);
-    const response = await data.json();
-    // console.log(response.items)
-    setVideos(response.items)
-}
+  // try{
+  //   const getVideos = async () => {
+  //     const data = await fetch(YOUTUBE_API);
+  //     const response = await data.json();
+  //     // console.log(response.items)
+  //     setVideos(response.items)
+  // }
 
-  useEffect(()=> {
-      dispatch(closeMenu())
-  },[])
+  //   useEffect(()=> {
+  //     dispatch(closeMenu())
+  //     getVideos();
+  //   },[dispatch, getVideos])
 
-  useEffect(() =>{
-      getVideos();
-  })
+  // }catch(e){
+  //   console.log(e)
+  //   return(
+  //     <h1>API not fetching data</h1>
+  //   )
+  // }
+
+
+  useEffect(() => {
+    const getVideos = async () => {
+      try {
+        const data = await fetch(YOUTUBE_API);
+        const response = await data.json();
+        setVideos(response.items || []); // Set default value as an empty array if response.items is undefined
+      } catch (error) {
+        console.log(error);
+        // You can handle the error here if needed
+      }
+    };
+
+    dispatch(closeMenu());
+    getVideos();
+  }, [dispatch]);
 
 
   return (
-    <div className='flex'>
-      <div className='video-player-side m-5 -ml-5'>
+    <div className='flex max-[425px]:flex-col'>
+      <div className='video-player-side m-5 -ml-5 max-[425px]:ml-2 max-[425px]:m-0'>
         <iframe width={`${isMenuOpen ? '800' : '950'}`}
-        // height="500" 
-        height={`${isMenuOpen ? '450' : '500'}`}
-        src={"https://www.youtube.com/embed/" + searchParams.get('v') }
-        title="YouTube video player" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-        allowFullScreen></iframe>
+          // height="500" 
+          height={`${isMenuOpen ? '450' : '500'}`}
+          src={"https://www.youtube.com/embed/" + searchParams.get('v') }
+          title="YouTube video player" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          allowFullScreen
+          className='max-[820px]:h-80 max-[820px]:w-[500px] max-[425px]:h-60 max-[425px]:w-screen
+          max-[1024px]:w-[650px] max-[1024px]:h-96'
+          >
+        </iframe>
       </div>
       <div className='recomd-video-side'>
         <div className='flex flex-col flex-wrap'>
-          {videos.map((video) =>
-          <RecommendedVideos key={video.id} info={video} /> )}
+          {videos.map((video) =>(
+          <Link to={'/watch?v=' + video.id} >
+          <RecommendedVideos key={video.id} info={video} /> 
+          </Link>)
+          )}
         </div>
       </div>
     </div>

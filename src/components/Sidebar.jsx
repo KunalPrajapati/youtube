@@ -21,7 +21,7 @@ const Sidebar = () => {
 
 
   return (
-    <div className='shadow-lg w-56 h-screen relative z-10'>
+    <div className='side-bar shadow-lg w-48 h-screen relative z-40 bg-white'>
         <ul className='py-4 px-5'>
           <li className='my-3'>
             <Link to='/'>

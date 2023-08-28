@@ -5,8 +5,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { toggleMenu } from '../utils/appSlice';
 import { cacheResult } from '../utils/searchSlice';
 import {GoSearch} from 'react-icons/go';
+import logo from '../assets/logo.png'
 // import ytLogo from '../assets/yt-logo.png';
-import ButtonList from './ButtonList';
+// import ButtonList from './ButtonList';
 
 
 const Head = () => {
@@ -39,7 +40,7 @@ const Head = () => {
         ,200) //concept of Debouncing
 
         return () => clearTimeout(timer);
-    }, [searchQuery]);
+    }, [searchQuery, searchCache]);
     // searchSlice error; redux not detecting that ;
 
 
@@ -103,20 +104,23 @@ const Head = () => {
     
 
   return (
-    <div className='relative'>
-        <div className='grid grid-flow-col p-5 shadow-lg z-30 bg-white'>
+    <div className=''>
+        <div className='grid grid-flow-col justify-between p-5 shadow-lg bg-white'>
             <div className='flex col-span-1'>
-                <img src={hamburgerIcon} alt="menu" className='h-8 cursor-pointer' onClick={()=>toggleMenuHandler()} />
+                <img src={hamburgerIcon} alt="menu" 
+                className='h-8 cursor-pointer max-[640px]:hidden' onClick={()=>toggleMenuHandler()} />
 
                 {/* <a href="/">
                     <img src={ytLogo} alt="youtube logo" className='h-8 mx-2 cursor-pointer' />
                 </a> */}
+                {/* youtube-icon */}
                 <a href="/">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Logo_of_YouTube_%282015-2017%29.svg/2560px-Logo_of_YouTube_%282015-2017%29.svg.png" alt="youtube logo" className='h-8 mx-2 cursor-pointer' />
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Logo_of_YouTube_%282015-2017%29.svg/2560px-Logo_of_YouTube_%282015-2017%29.svg.png" alt="youtube logo" className='h-8 mx-2 cursor-pointer max-[820px]:h-5 max-[820px]:mt-2' />
                 </a>
             </div>
 
-            <div className='col-span-10 text-center mr-24 relative'>
+            {/* searchbar */}
+            <div className='col-span-9 text-center mr-24 relative lg:block max-[640px]:hidden '>
                 <div>
                     <input type="text" name="" id="" 
                     className='w-1/2 border border-gray-400 p-2 px-5 rounded-l-full'
@@ -136,8 +140,10 @@ const Head = () => {
                 </div>}
             </div>
 
+            {/* user icon */}
             <div className='col-span-1'>
-                <img src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png" alt="userIcon" className='h-8' />
+                {/* <img src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png" alt="userIcon" className='h-8' /> */}
+                <img src={logo} alt="userIcon" className='h-8 w-8 rounded-full' />
             </div>
 
 

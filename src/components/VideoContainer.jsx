@@ -8,20 +8,30 @@ const VideoContainer = () => {
 
     const [videos, setVideos] = useState([]);
 
-    useEffect(() =>{
-        getVideos()
-    },[])
 
-    const getVideos = async () => {
-        const data = await fetch(YOUTUBE_API);
-        const response = await data.json();
+
+    try{
+      const getVideos = async () => {
+      const data = await fetch(YOUTUBE_API);
+      const response = await data.json();
         // console.log(response.items)
-        setVideos(response.items)
+      setVideos(response.items)
+      }
+
+      useEffect(() =>{
+        getVideos()
+    },[getVideos])
+
+    }catch(e){
+      console.log(e)
+      return(
+        <h1>API not fetching data</h1>
+      )
     }
 
   return (
     <div className=''>
-      <div className='flex flex-wrap'>
+      <div className='flex justify-center max-[425px]:justify-normal flex-wrap'>
         {videos.map((video) =>
         <Link to={'/watch?v=' + video.id} >
         <VideoCards key={video.id} info={video} /> 

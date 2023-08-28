@@ -10,12 +10,12 @@ const Body = () => {
   
   return (
     <div className='flex'>
-      <div className="sidebar fixed">
+      <div className="sidebar fixed ">
         <Sidebar/>
       </div>
       {/* <MainContainer/> */}
       {/* <div className='w-[90%] ml-60'> */}
-      <div className= {`${isMenuOpen ? 'ml-64' : 'ml-16' }`}>
+      <div className= {`${isMenuOpen ? ' ml-48' : 'ml-16 max-[768px]:ml-4 max-[820px]:ml-10 max-[425px]:-ml-[8px]' } flex `}>
         <Outlet/>
       </div>
     </div>
