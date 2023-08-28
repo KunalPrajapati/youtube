@@ -60,7 +60,7 @@ const WatchPage = () => {
 
   return (
     <div className='flex max-[425px]:flex-col'>
-      <div className='video-player-side m-5 -ml-5 max-[425px]:ml-2 max-[425px]:m-0'>
+      <div className='video-player-side m-2 -ml-5 max-[425px]:ml-2 max-[425px]:m-0'>
         <iframe width={`${isMenuOpen ? '800' : '950'}`}
           // height="500" 
           height={`${isMenuOpen ? '450' : '500'}`}
