@@ -9,7 +9,7 @@
 screenshots of work
 
 
-"/poc/img1.png"
+![youtube-clone](/poc/img1.png)
 
 "/poc/img2.png"
 
